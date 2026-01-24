@@ -1,5 +1,7 @@
 # TEPCO Cost API Scraper
 
+![Scrape TEPCO Rates](https://github.com/joshuatly/tepco-cost-api/actions/workflows/scrape_tepco.yml/badge.svg)
+
 This repository contains a tool to scrape electricity rate adjustments from TEPCO (Tokyo Electric Power Company) and expose them as a JSON file. It is designed to be automated via GitHub Actions.
 
 ## 📊 Data Output: `tepco_rates.json`
@@ -78,7 +80,7 @@ To run the script locally:
 
 ## ✅ How to verify it's working
 
-1. **Check the Badge**: You can add a status badge to this README from the Actions tab.
+1. **Check the Badge**: The status badge at the top of this README indicates if the latest scheduled scrape was successful.
 2. **Check `tepco_rates.json`**:
    - Look at the `current_rates` object at the top.
    - Verify `date_iso` matches the last run date.
