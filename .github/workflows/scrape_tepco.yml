@@ -1,0 +1,47 @@
+name: Scrape TEPCO Rates
+
+on:
+  schedule:
+    - cron: '0 0 5,25 * *' # Run twice a month (5th and 25th)
+  workflow_dispatch: # Allow manual trigger
+    inputs:
+      scrape_pdf:
+        description: 'Scrape Renewable Energy Levy PDF'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run scraper
+        run: |
+          if [ "${{ github.event.inputs.scrape_pdf }}" = "true" ]; then
+            python scrape_tepco.py --scrape-pdf
+          else
+            python scrape_tepco.py
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add tepco_rates.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update TEPCO rates" && git push)

@@ -1,0 +1,243 @@
+{
+    "current_rates": {
+        "year": 2026,
+        "month": 1,
+        "date_iso": "2026-01-24",
+        "fuel_adjustment": -7.72,
+        "renewable_energy_levy": 3.98
+    },
+    "fuel_adjustment": [
+        {
+            "year": 2026,
+            "month": 2,
+            "date_iso": "2026-02-01",
+            "price_kwh": -12.22,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2026,
+            "month": 1,
+            "date_iso": "2026-01-01",
+            "price_kwh": -7.72,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 12,
+            "date_iso": "2025-12-01",
+            "price_kwh": -7.7,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 11,
+            "date_iso": "2025-11-01",
+            "price_kwh": -7.65,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 10,
+            "date_iso": "2025-10-01",
+            "price_kwh": -9.65,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 9,
+            "date_iso": "2025-09-01",
+            "price_kwh": -9.9,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 8,
+            "date_iso": "2025-08-01",
+            "price_kwh": -9.25,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 7,
+            "date_iso": "2025-07-01",
+            "price_kwh": -6.88,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 6,
+            "date_iso": "2025-06-01",
+            "price_kwh": -6.39,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 5,
+            "date_iso": "2025-05-01",
+            "price_kwh": -6.19,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 4,
+            "date_iso": "2025-04-01",
+            "price_kwh": -7.38,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 3,
+            "date_iso": "2025-03-01",
+            "price_kwh": -8.83,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 2,
+            "date_iso": "2025-02-01",
+            "price_kwh": -9.0,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2025,
+            "month": 1,
+            "date_iso": "2025-01-01",
+            "price_kwh": -6.51,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 12,
+            "date_iso": "2024-12-01",
+            "price_kwh": -6.33,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 11,
+            "date_iso": "2024-11-01",
+            "price_kwh": -8.67,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 10,
+            "date_iso": "2024-10-01",
+            "price_kwh": -10.19,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 9,
+            "date_iso": "2024-09-01",
+            "price_kwh": -10.37,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 8,
+            "date_iso": "2024-08-01",
+            "price_kwh": -6.31,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 7,
+            "date_iso": "2024-07-01",
+            "price_kwh": -6.09,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 6,
+            "date_iso": "2024-06-01",
+            "price_kwh": -7.6,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 5,
+            "date_iso": "2024-05-01",
+            "price_kwh": -9.14,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 4,
+            "date_iso": "2024-04-01",
+            "price_kwh": -9.21,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
+        {
+            "year": 2024,
+            "month": 3,
+            "date_iso": "2024-03-01",
+            "price_kwh": -9.28,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        }
+    ],
+    "standard_s": {
+        "base_rate_per_10a": 311.75,
+        "base_rates": {
+            "10A": 311.75,
+            "20A": 623.5,
+            "30A": 935.25,
+            "40A": 1247.0,
+            "50A": 1558.75,
+            "60A": 1870.5
+        },
+        "usage_rates": [
+            {
+                "min": 0,
+                "max": 120,
+                "price": 29.8
+            },
+            {
+                "min": 121,
+                "max": 300,
+                "price": 36.4
+            },
+            {
+                "min": 301,
+                "max": null,
+                "price": 40.49
+            }
+        ]
+    },
+    "renewable_energy_levy": [
+        {
+            "start": "2024-05",
+            "end": "2025-04",
+            "price": 3.49
+        },
+        {
+            "start": "2025-05",
+            "end": "2026-05",
+            "price": 3.98
+        }
+    ]
+}
