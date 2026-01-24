@@ -6,6 +6,8 @@ This repository contains a tool to scrape electricity rate adjustments from TEPC
 
 The generated JSON file provides the data you need to calculate electricity costs.
 
+**👉 [Direct Link to JSON Data](https://raw.githubusercontent.com/joshuatly/tepco-cost-api/refs/heads/main/tepco_rates.json)**
+
 ### 1. `current_rates` (The Canonical Source)
 Use this object to get the rates applicable **right now** (based on the date the script ran). This is likely what you want for a dashboard or calculator.
 
