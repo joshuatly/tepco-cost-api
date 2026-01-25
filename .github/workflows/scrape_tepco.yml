@@ -2,7 +2,7 @@ name: Scrape TEPCO Rates
 
 on:
   schedule:
-    - cron: '0 0 5,25 * *' # Run twice a month (5th and 25th)
+    - cron: '38 16 5,25 * *' # Run twice a month (5th and 25th)
   workflow_dispatch: # Allow manual trigger
     inputs:
       scrape_pdf:
