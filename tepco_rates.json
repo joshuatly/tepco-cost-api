@@ -1,12 +1,20 @@
 {
     "current_rates": {
         "year": 2026,
-        "month": 1,
-        "date_iso": "2026-01-26",
-        "fuel_adjustment": -7.72,
+        "month": 2,
+        "date_iso": "2026-02-14",
+        "fuel_adjustment": -12.22,
         "renewable_energy_levy": 3.98
     },
     "fuel_adjustment": [
+        {
+            "year": 2026,
+            "month": 3,
+            "date_iso": "2026-03-01",
+            "price_kwh": -12.09,
+            "area": "Kanto",
+            "type": "Low Voltage (Standard S)"
+        },
         {
             "year": 2026,
             "month": 2,
@@ -188,14 +196,6 @@
             "month": 4,
             "date_iso": "2024-04-01",
             "price_kwh": -9.21,
-            "area": "Kanto",
-            "type": "Low Voltage (Standard S)"
-        },
-        {
-            "year": 2024,
-            "month": 3,
-            "date_iso": "2024-03-01",
-            "price_kwh": -9.28,
             "area": "Kanto",
             "type": "Low Voltage (Standard S)"
         }
