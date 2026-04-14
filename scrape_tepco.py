@@ -117,7 +117,7 @@ def get_renewable_energy_levy(should_scrape_pdf=False):
     # Initial hardcoded values
     levies = [
         {"start": "2024-05", "end": "2025-04", "price": 3.49},
-        {"start": "2025-05", "end": "2026-05", "price": 3.98}
+        {"start": "2025-05", "end": "2026-04", "price": 3.98}
     ]
     
     if not should_scrape_pdf:
@@ -126,26 +126,25 @@ def get_renewable_energy_levy(should_scrape_pdf=False):
     # Check for future years (current year + 1, etc) to see if new rate is published
     current_year = datetime.datetime.now().year
     
-    # Check for this year (if after April) and next year.
-    # The list covers up to 2026-05.
-    
-    # Let's check for 2026 (May 2026) and 2027 just in case script runs long term
-    years_to_check = [2026, 2027]
+    # PDF filename year is one ahead of the levy start year:
+    # e.g. 20270501.pdf covers 2026/05-2027/04
+    # Check current_year+1 and current_year+2 to find new PDFs
+    years_to_check = [current_year + 1, current_year + 2]
     
     for year in years_to_check:
         # Check if we already have it
         already_has = False
         for l in levies:
-            if l["start"] == f"{year}-05":
+            if l["start"] == f"{year-1}-05":
                 already_has = True
                 break
-        
+
         if not already_has:
             price = check_renewable_energy_pdf(year)
             if price:
                 levies.append({
-                    "start": f"{year}-05",
-                    "end": f"{year+1}-05",
+                    "start": f"{year-1}-05",
+                    "end": f"{year}-04",
                     "price": price
                 })
                 
@@ -257,15 +256,9 @@ def get_current_rates(fuel_data, levy_data):
         # Simple string comparison works for YYYY-MM if we range check
         # But let's be more robust.
         # Actually simplest is: Start <= Current <= End? 
-        # The data says "2025-05" to "2026-05". Usually rates change in May.
-        # So 2024-05 to 2025-04 is one period. 2025-05 to 2026-05 is next.
-        # Wait, 2026-05 is listed as END of a period?
-        # Re-reading my previous code: 
-        # {"start": "2024-05", "end": "2025-04", "price": 3.49},
-        # {"start": "2025-05", "end": "2026-05", "price": 3.98}
-        
-        # If I am in May 2025, matches 2nd entry.
-        # If I am in April 2025, matches 1st entry.
+        # Each period runs May to April (inclusive):
+        # {"start": "2024-05", "end": "2025-04", "price": 3.49}
+        # {"start": "2025-05", "end": "2026-04", "price": 3.98}
         
         # Parse start and end
         start_y, start_m = map(int, entry["start"].split('-'))
@@ -278,13 +271,6 @@ def get_current_rates(fuel_data, levy_data):
         end_val = end_y * 100 + end_m
         
         # If the range is [Start, End], treating matches.
-        # Usually levy is valid UNTIL the next change.
-        # The end date in my hardcode seems to represent the last month or the renewal month?
-        # 2025-05 to 2026-05... that's 13 months? usually it's 12 months.
-        # May to April.
-        # Let's assume the helper logic I wrote earlier "f'{year}-05' to f'{year+1}-05'" might be slightly loose.
-        # But let's just check if current month falls in the range.
-        
         if start_val <= curr_val <= end_val:
             levy_val = entry["price"]
             break
