@@ -2,7 +2,7 @@
     "current_rates": {
         "year": 2026,
         "month": 4,
-        "date_iso": "2026-04-12",
+        "date_iso": "2026-04-14",
         "fuel_adjustment": -8.93,
         "renewable_energy_levy": 3.98
     },
@@ -237,6 +237,11 @@
         {
             "start": "2025-05",
             "end": "2026-05",
+            "price": 3.98
+        },
+        {
+            "start": "2026-05",
+            "end": "2027-05",
             "price": 3.98
         }
     ]
