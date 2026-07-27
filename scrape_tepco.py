@@ -2,10 +2,12 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
+import os
 import datetime
 import sys
 import io
 import unicodedata
+import urllib.parse
 import argparse
 from pypdf import PdfReader
 
@@ -25,6 +27,22 @@ HEADERS = {
     ),
     "Accept-Language": "ja,en-US;q=0.9,en;q=0.8",
 }
+
+# TEPCO blocks datacenter/cloud IP ranges (e.g. GitHub Actions runners) with a
+# 403 even when browser-like headers are sent. To work around this, an optional
+# HTTP proxy can be supplied via the TEPCO_PROXY environment variable. It should
+# be a URL prefix that takes the real target URL as a `url` query parameter,
+# e.g. "https://example.workers.dev/?url=". The value is kept out of the code
+# (and out of CI logs) by passing it as a secret. When unset, requests go direct.
+PROXY_PREFIX = os.environ.get("TEPCO_PROXY", "").strip()
+
+
+def fetch(url, **kwargs):
+    """GET a URL, routing through TEPCO_PROXY if configured."""
+    if PROXY_PREFIX:
+        url = PROXY_PREFIX + urllib.parse.quote(url, safe="")
+    kwargs.setdefault("headers", HEADERS)
+    return requests.get(url, **kwargs)
 
 def clean_text(text):
     return text.strip().replace("\n", "").replace("\r", "")
@@ -77,7 +95,7 @@ def check_renewable_energy_pdf(year):
     print(f"Checking for Renewable Energy Levy PDF at {url}...")
     
     try:
-        response = requests.get(url, headers=HEADERS, timeout=10)
+        response = fetch(url, timeout=10)
         if response.status_code == 200:
             # Parse PDF
             with io.BytesIO(response.content) as f:
@@ -168,7 +186,7 @@ def scrape_tepco_rates(html_content=None):
     if html_content:
         soup = BeautifulSoup(html_content, 'html.parser')
     else:
-        response = requests.get(URL, headers=HEADERS, timeout=30)
+        response = fetch(URL, timeout=30)
         response.raise_for_status()
         response.encoding = response.apparent_encoding
         soup = BeautifulSoup(response.text, 'html.parser')
