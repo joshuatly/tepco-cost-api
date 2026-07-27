@@ -32,6 +32,11 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run scraper
+        env:
+          # TEPCO returns 403 for GitHub's datacenter IPs. Route requests through
+          # a proxy supplied as a repo secret so it stays out of the code and is
+          # masked (***) in logs. If the secret is unset, requests go direct.
+          TEPCO_PROXY: ${{ secrets.TEPCO_PROXY }}
         run: |
           if [ "${{ github.event.inputs.scrape_pdf }}" = "true" ]; then
             python scrape_tepco.py --scrape-pdf
