@@ -12,6 +12,20 @@ from pypdf import PdfReader
 URL = "https://www.tepco.co.jp/ep/private/fuelcost2/newlist/index-j.html"
 OUTPUT_FILE = "tepco_rates.json"
 
+# TEPCO's site rejects requests with the default python-requests User-Agent
+# (returns HTTP 403). Send browser-like headers so the request is accepted.
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;q=0.9,"
+        "image/avif,image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "ja,en-US;q=0.9,en;q=0.8",
+}
+
 def clean_text(text):
     return text.strip().replace("\n", "").replace("\r", "")
 
@@ -63,7 +77,7 @@ def check_renewable_energy_pdf(year):
     print(f"Checking for Renewable Energy Levy PDF at {url}...")
     
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(url, headers=HEADERS, timeout=10)
         if response.status_code == 200:
             # Parse PDF
             with io.BytesIO(response.content) as f:
@@ -154,7 +168,7 @@ def scrape_tepco_rates(html_content=None):
     if html_content:
         soup = BeautifulSoup(html_content, 'html.parser')
     else:
-        response = requests.get(URL)
+        response = requests.get(URL, headers=HEADERS, timeout=30)
         response.raise_for_status()
         response.encoding = response.apparent_encoding
         soup = BeautifulSoup(response.text, 'html.parser')
